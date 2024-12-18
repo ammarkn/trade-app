@@ -1,0 +1,42 @@
+# Build artifacts and intermediate files
+build/
+DerivedData/
+
+# Xcode specific
+*.xcworkspace
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+
+# CocoaPods
+Pods/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+
+# Archives
+*.xcarchive
+
+# IDE
+*.idea/
+
+# Logs
+*.log
+
+# Temporary files
+*.swp
+*.lock
+
+# User-specific settings
+*.mode1v3
+*.pbxuser
