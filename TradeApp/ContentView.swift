@@ -9,27 +9,44 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView {
-            Text("Home")
-                .tabItem {
-                    Label("Home", systemImage: "house")
+        NavigationView {
+            VStack(spacing: 5) {
+                HStack {
+                    Text("B")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.mint)
+                    
+                    Text("Barterly")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
                 }
-            SearchView()
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
+                Spacer(minLength: 0)
+                
+                TabView {
+                    HomeView()
+                        .tabItem {
+                            Label("Home", systemImage: "house")
+                        }
+                    SearchView()
+                        .tabItem {
+                            Label("Search", systemImage: "magnifyingglass")
+                        }
+                    Text("Create")
+                        .tabItem {
+                            Label("Create", systemImage: "plus")
+                        }
+                    Text("Chats")
+                        .tabItem {
+                            Label("Chats", systemImage: "message")
+                        }
+                    Text("Profile")
+                        .tabItem {
+                            Label("Profile", systemImage: "person")
+                        }
                 }
-            Text("Create")
-                .tabItem {
-                    Label("Create", systemImage: "plus")
-                }
-            Text("Chats")
-                .tabItem {
-                    Label("Chats", systemImage: "message")
-                }
-            Text("Profile")
-                .tabItem {
-                    Label("Profile", systemImage: "person")
-                }
+            }
         }
     }
 }
