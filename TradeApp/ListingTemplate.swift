@@ -23,4 +23,5 @@ let dummyListings = [
     Listing(image: "chair", name: "Old Wooden Chair", neighborhood: "Clayton Park", category: "🛏️ Furniture", description: nil),
     Listing(image: "laptop", name: "Dell XPS (2021)", neighborhood: "Dartmouth", category: "📱 Electronics", description: nil),
     Listing(image: "laptop", name: "Google Chromebook (2019)", neighborhood: "Downtown", category: "📱 Electronics", description: nil),
+    Listing(image: "chair", name: "Herman Miller Chair", neighborhood: "Upper Sackville", category: "🛏️ Furniture", description: nil)
 ]

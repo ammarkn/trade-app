@@ -17,14 +17,14 @@ struct SignInView: View {
     var body: some View {
         VStack {
             Spacer()
-            HStack {
-                Text("B")
+            HStack(spacing: 5) {
+                Text("฿")
                     .font(.system(size: 60))
                     .fontWeight(.bold)
                     .foregroundColor(.indigo)
                 
                 Text("Barterly")
-                    .font(.system(size: 40))
+                    .font(.system(size: 55))
                     .fontWeight(.semibold)
                     .foregroundColor(.black)
             }
@@ -69,8 +69,13 @@ struct SignInView: View {
             .padding(.top, 20)
             Spacer()
             
-            Button(action: register) {
-                Text("Register")
+            HStack(spacing: 5) {
+                Text("Don't have an account?")
+                    .foregroundStyle(.secondary)
+                Button(action: register) {
+                    Text("Sign Up")
+                }
+
             }
         }
         .padding()
@@ -95,5 +100,5 @@ struct SignInView: View {
 }
 
 #Preview {
-    ContentView()
+    SignInView(isAuthenticated: .constant(false), authenticatedUser: .constant(nil))
 }

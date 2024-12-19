@@ -18,73 +18,83 @@ struct HomeView: View {
             return dummyListings
         }
     }
-    let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    let columns = [GridItem(.flexible(), spacing: 16), GridItem(.flexible(), spacing: 16)]
     
     var body: some View {
         NavigationView {
             ScrollView {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        Button(action: {
-                            selectedCategory = "All"
-                        }) {
-                            Text("All")
-                                .font(.headline)
-                                .padding(8)
-                                .background(
-                                    selectedCategory == "All" ? Color.blue.opacity(0.2) : Color.clear
-                                )
-                                .cornerRadius(8)
-                                .foregroundStyle(selectedCategory == "All" ? .blue : .black)
-                        }
-                        ForEach(["📱 Electronics", "🛏️ Furniture", "🚗 Transportation"], id: \.self) { category in
+                    HStack(spacing: 12) {
+                        ForEach(["All"] + ["📱 Electronics", "🛏️ Furniture", "🚗 Transportation"], id: \.self) { category in
                             Button(action: {
-                                if selectedCategory == category {
-                                    selectedCategory = nil
-                                }
-                                else {
+                                if category == "All" {
+                                    selectedCategory = "All"
+                                } else if selectedCategory == category {
+                                    selectedCategory = "All"
+                                } else {
                                     selectedCategory = category
                                 }
                             }) {
                                 Text(category)
                                     .font(.headline)
-                                    .padding(8)
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 12)
                                     .background(
-                                        selectedCategory == category ? Color.blue.opacity(0.2) : Color.clear
+                                        Capsule()
+                                            .fill(selectedCategory == category ? Color.indigo.opacity(0.2) : Color.gray.opacity(0.1))
                                     )
-                                    .cornerRadius(8)
-                                    .foregroundStyle(selectedCategory == category ? .blue : .black)
+                                    .foregroundStyle(selectedCategory == category ? .indigo : .black)
                             }
                         }
                     }
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
                 }
-                LazyVGrid(columns: columns, spacing:  16) {
+                LazyVGrid(columns: [
+                    GridItem(.fixed(UIScreen.main.bounds.width / 2), spacing: 1),
+                    GridItem(.fixed(UIScreen.main.bounds.width / 2), spacing: 0)
+                ], spacing: 1) {
                     ForEach(filteredListings) { listing in
                         NavigationLink(destination: ListingDetailView(listing: listing)) {
-                            VStack {
+                            ZStack(alignment: .bottom) {
                                 Image(listing.image)
                                     .resizable()
-                                    .frame(width: 150, height: 120)
                                     .aspectRatio(contentMode: .fill)
-                                    .cornerRadius(8)
+                                    .frame(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.width / 2)
+                                    .clipped()
                                 
-                                Text(listing.name)
-                                    .font(.headline)
-                                    .lineLimit(1)
-                                
-                                Text(listing.neighborhood)
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .lineLimit(1)
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(listing.name)
+                                        .font(.headline)
+                                        .lineLimit(2)
+                                    
+                                    Text(listing.neighborhood)
+                                        .font(.subheadline)
+                                        .lineLimit(1)
+                                }
+                                .foregroundStyle(.white)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 10)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [
+                                            .black.opacity(1),
+                                            .black.opacity(0)
+                                        ]),
+                                        startPoint: .bottom,
+                                        endPoint: .top
+                                    )
+                                )
                             }
                         }
                         .buttonStyle(PlainButtonStyle())
                     }
                 }
-                .padding()
+                .padding(.horizontal, 0)
             }
             .navigationTitle("")
+//            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

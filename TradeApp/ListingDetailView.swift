@@ -12,38 +12,49 @@ struct ListingDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 16) {
                 Image(listing.image)
                     .resizable()
-                    .frame(height: 250)
                     .aspectRatio(contentMode: .fill)
-                    .scaledToFit()
+                    .frame(maxWidth: UIScreen.main.bounds.width)
+                    .frame(height: 300)
+                    .clipped()
+                    .overlay(
+                        LinearGradient(
+                            gradient: Gradient(colors: [
+                                .clear,
+                                .black.opacity(0.2)
+                            ]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                VStack(alignment: .leading, spacing: 16) {
+                    Text(listing.name)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Text(listing.neighborhood)
+                        .font(.title2)
+                        .foregroundStyle(.secondary)
+                    
+                    Divider()
                 
-                Text(listing.name)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.top, 10)
-                
-                Text(listing.neighborhood)
-                    .font(.title2)
-                    .foregroundStyle(.secondary)
-                
-                Divider()
-                
-                Text("Description")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .padding(.top, 15)
-                
-                Text(listing.description ?? "No description available.")
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                
-                Spacer()
+                    Text("Description")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Text(listing.description ?? "No description available.")
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    Spacer()
+                }
+                .padding(.horizontal, 20)
             }
-            .padding()
+            .padding(.vertical)
         }
         .navigationTitle("Details")
+//        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

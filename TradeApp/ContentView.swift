@@ -15,40 +15,46 @@ struct ContentView: View {
         NavigationView {
             if isAuthenticated {
                 VStack(spacing: 5) {
-                    HStack {
-                        Text("B")
-                            .font(.largeTitle)
+                    HStack(spacing: 5) {
+                        Text("฿")
+//                            .font(.largeTitle)
+                            .font(.system(size: 40))
                             .fontWeight(.bold)
                             .foregroundColor(.indigo)
-                        
                         Text("Barterly")
-                            .font(.title)
+//                            .font(.title)
+                            .font(.system(size: 35))
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
                     }
-                    Spacer(minLength: 0)
+                    .padding(.top, 8)
                     
                     TabView {
                         HomeView()
                             .tabItem {
                                 Label("Home", systemImage: "house")
                             }
+                            .accessibilityLabel("Home Tab")
                         SearchView()
                             .tabItem {
                                 Label("Search", systemImage: "magnifyingglass")
                             }
+                            .accessibilityLabel("Search Tab")
                         Text("Create")
                             .tabItem {
                                 Label("Create", systemImage: "plus")
                             }
+                            .accessibilityLabel("Create Post Tab")
                         Text("Chats")
                             .tabItem {
                                 Label("Chats", systemImage: "message")
                             }
+                            .accessibilityLabel( "Chats Tab")
                         ProfileView(isAuthenticated: $isAuthenticated, user: authenticatedUser)
                             .tabItem {
                                 Label("Profile", systemImage: "person")
                             }
+                            .accessibilityLabel( "Profile Tab")
                     }
                     .accentColor(.indigo)
                 }
