@@ -12,37 +12,80 @@ struct ProfileView: View {
     let user: User?
     
     var body: some View {
-        VStack {
-            if let user = user {
-                Text("Welcome, \(user.username)!")
-                    .font(.largeTitle)
-                    .padding()
-                Text("Email: \(user.email)")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
-            else {
-                Text("User not found.")
-                    .foregroundStyle(.secondary)
-            }
-            
-            Spacer()
-                .padding()
-            
-            
-            Button(action: signOut) {
-                Text("Sign Out")
+        ScrollView {
+            VStack(spacing: 24) {
+                VStack(spacing: 16) {
+                    Image(user?.profileImage ?? "avatar-default-symbolic")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle()
+                                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                        )
+                        .shadow(radius: 2)
+                    
+                    Text("\(user?.firstName ?? "N /") " + "\(user?.lastName ?? "A")")
+                        .font(.title)
+                        .fontWeight(.bold)
+                }
+                .padding(.top, 20)
+                
+                VStack(spacing: 20) {
+                    infoCard(title: "Username", value: user?.username ?? "N/A")
+                    infoCard(title: "Email", value: user?.email ?? "N/A")
+                    infoCard(title: "Neighbourhood", value: user?.neighbourhood ?? "N/A")
+                }
+                .padding(.horizontal)
+                
+                Spacer()
+                
+                Button(action: signOut) {
+                    HStack {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                        Text("Edit Profile")
+                    }
                     .font(.headline)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.red)
                     .foregroundStyle(.white)
-                    .cornerRadius(8)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.indigo)
+                }
+                
+                Button(action: signOut) {
+                    HStack {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                        Text("Sign out")
+                    }
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.red)
+                }
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.bottom, 20)
         }
-        .padding()
         .navigationTitle("Profile")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    
+    private func infoCard(title: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            
+            Text(value)
+                .font(.body)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(8)
+        }
     }
     
     func signOut() {

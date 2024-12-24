@@ -68,7 +68,7 @@ struct HomeView: View {
                                         .font(.headline)
                                         .lineLimit(2)
                                     
-                                    Text(listing.neighborhood)
+                                    Text(listing.neighbourhood)
                                         .font(.subheadline)
                                         .lineLimit(1)
                                 }

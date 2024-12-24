@@ -49,7 +49,7 @@ struct SearchView: View {
                                             .font(.headline)
                                             .lineLimit(1)
                                         
-                                        Text(listing.neighborhood)
+                                        Text(listing.neighbourhood)
                                             .font(.subheadline)
                                             .foregroundStyle(.secondary)
                                     }

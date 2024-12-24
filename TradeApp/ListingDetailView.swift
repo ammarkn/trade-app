@@ -30,12 +30,40 @@ struct ListingDetailView: View {
                         )
                     )
                 VStack(alignment: .leading, spacing: 16) {
-                    Text(listing.name)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    Text(listing.neighborhood)
-                        .font(.title2)
-                        .foregroundStyle(.secondary)
+                    HStack(alignment: .top, spacing: 8) {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text(listing.name)
+                                .font(.title)
+                                .fontWeight(.bold)
+                            Text(listing.neighbourhood)
+                                .font(.title3)
+                                .foregroundStyle(.secondary)
+                        }
+                        
+                        Spacer()
+                        Divider()
+                        Spacer()
+                        
+                        VStack(alignment: .trailing, spacing: 4) {
+                            Text("Trade by:")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                            HStack(spacing: 6) {
+                                Text(listing.user.firstName)
+                                    .font(.headline)
+                                    .fontWeight(.light)
+                                    .fontWeight(.medium)
+                                
+                                Image(listing.user.profileImage ?? "avatar-default-symbolic")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 32, height: 32)
+                                    .clipShape(Circle())
+                                    .overlay(Circle()
+                                        .stroke(Color.gray.opacity(0.2), lineWidth: 1))
+                            }
+                        }
+                    }
                     
                     Divider()
                 
@@ -43,6 +71,14 @@ struct ListingDetailView: View {
                         .font(.title2)
                         .fontWeight(.semibold)
                     Text(listing.description ?? "No description available.")
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                    
+                    Text("Category")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    Text(listing.category)
                         .font(.body)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
