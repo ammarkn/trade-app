@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct SignInView: View {
-    @Binding var isAuthenticated: Bool
-    @Binding var authenticatedUser: User?
-    @State private var username = ""
+    @EnvironmentObject var authService: AuthService
+    @State private var email = ""
     @State private var password = ""
-    @State private var message = ""
+    @State private var showError = false
+    @State private var errorMessage = ""
+    @State private var showSignUp = false
+    
+//    @Binding var isAuthenticated: Bool
+//    @Binding var authenticatedUser: User?
+//    @State private var username = ""
+//    @State private var password = ""
+//    @State private var message = ""
     
     var body: some View {
         VStack {
@@ -34,7 +41,7 @@ struct SignInView: View {
                 .italic()
                 .padding(.bottom, 25)
             
-            TextField("Username", text: $username)
+            TextField("Email", text: $email)
                 .padding(5)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
@@ -44,54 +51,45 @@ struct SignInView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
             
-            if !message.isEmpty {
-                if(isAuthenticated == false) {
-                    Text(message)
-                        .foregroundStyle(.red)
-                        .padding(.top, 10)
-                }
-                else {
-                    Text(message)
-                        .foregroundStyle(.green)
-                        .padding(.top, 10)
+            Button("Sign In") {
+                Task {
+                    do {
+                        try await authService.signIn(email: email, password: password)
+                    } catch {
+                        showError = true
+                        errorMessage = error.localizedDescription
+                    }
                 }
             }
+            .alert("Error", isPresented: $showError) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text(errorMessage)
+            }
+            .font(.headline)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.indigo)
+            .foregroundStyle(.white)
+            .cornerRadius(8)
+            .padding(.top, 16)
             
-            Button(action: signIn) {
-                Text("Sign In")
-                    .font(.headline)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.indigo)
-                    .foregroundStyle(.white)
-                    .cornerRadius(8)
-            }
-            .padding(.top, 20)
             Spacer()
             
             HStack(spacing: 5) {
                 Text("Don't have an account?")
                     .foregroundStyle(.secondary)
-                Button(action: register) {
+                Button(action: { showSignUp = true }) {
                     Text("Sign Up")
                 }
-
+                .sheet(isPresented: $showSignUp) {
+                    SignUpView()
+                        .environmentObject(authService)
+                }
             }
         }
         .padding()
         .navigationTitle("")
-    }
-    func signIn() {
-        if let user = dummyUsers.first(where: { $0.username == username && $0.password == password}) {
-            isAuthenticated = true
-            authenticatedUser = user
-            message = "Sign in successful."
-        }
-        else {
-            isAuthenticated = false
-            authenticatedUser = nil
-            message = "Invalid username or password."
-        }
     }
     
     func register() {
@@ -100,5 +98,6 @@ struct SignInView: View {
 }
 
 #Preview {
-    SignInView(isAuthenticated: .constant(false), authenticatedUser: .constant(nil))
+    SignInView()
+        .environmentObject(AuthService())
 }

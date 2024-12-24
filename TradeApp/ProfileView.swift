@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @Binding var isAuthenticated: Bool
-    let user: User?
+    @EnvironmentObject var authService: AuthService
     
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
                 VStack(spacing: 16) {
-                    Image(user?.profileImage ?? "avatar-default-symbolic")
+                    Image("avatar-default-symbolic")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 120, height: 120)
@@ -26,22 +25,20 @@ struct ProfileView: View {
                         )
                         .shadow(radius: 2)
                     
-                    Text("\(user?.firstName ?? "N /") " + "\(user?.lastName ?? "A")")
+                    Text("FirstName LastName")
                         .font(.title)
                         .fontWeight(.bold)
                 }
                 .padding(.top, 20)
                 
                 VStack(spacing: 20) {
-                    infoCard(title: "Username", value: user?.username ?? "N/A")
-                    infoCard(title: "Email", value: user?.email ?? "N/A")
-                    infoCard(title: "Neighbourhood", value: user?.neighbourhood ?? "N/A")
+                    infoCard(title: "Username", value: "Username here")
+                    infoCard(title: "Email", value: "Email here")
+                    infoCard(title: "Neighbourhood", value: "Neighbourhood here")
                 }
                 .padding(.horizontal)
-                
-                Spacer()
-                
-                Button(action: signOut) {
+                                
+                Button(action: {}) {
                     HStack {
                         Image(systemName: "rectangle.portrait.and.arrow.right")
                         Text("Edit Profile")
@@ -51,18 +48,22 @@ struct ProfileView: View {
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color.indigo)
+                    .cornerRadius(8)
                 }
                 
-                Button(action: signOut) {
+                Button(action: {
+                    authService.signOut()
+                }) {
                     HStack {
                         Image(systemName: "rectangle.portrait.and.arrow.right")
-                        Text("Sign out")
+                        Text("Sign Out")
                     }
                     .font(.headline)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color.red)
+                    .cornerRadius(8)
                 }
             }
             .padding(.horizontal)
@@ -87,12 +88,9 @@ struct ProfileView: View {
                 .cornerRadius(8)
         }
     }
-    
-    func signOut() {
-        isAuthenticated = false
-    }
 }
 
 #Preview {
-    ProfileView(isAuthenticated: .constant(true), user: dummyUsers[0])
+    ProfileView()
+        .environmentObject(AuthService())
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82B048E837602D074A91F035 /* Pods_TradeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33143AD9C99EAAED9B3F011E /* Pods_TradeApp.framework */; };
 		A0CA80F62D132D6100972C48 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A0CA80F52D132D5800972C48 /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		257BC37C92B24881134061A3 /* Pods-TradeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeApp.debug.xcconfig"; path = "Target Support Files/Pods-TradeApp/Pods-TradeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		33143AD9C99EAAED9B3F011E /* Pods_TradeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TradeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		738743150EBE849BC81D0F62 /* Pods-TradeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TradeApp.release.xcconfig"; path = "Target Support Files/Pods-TradeApp/Pods-TradeApp.release.xcconfig"; sourceTree = "<group>"; };
 		A0CA80C22D13171600972C48 /* TradeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CA80D22D13171700972C48 /* TradeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TradeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CA80DC2D13171700972C48 /* TradeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TradeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82B048E837602D074A91F035 /* Pods_TradeApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26DAE829F986023659DB8DC4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				33143AD9C99EAAED9B3F011E /* Pods_TradeApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A0CA80B92D13171600972C48 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +98,8 @@
 				A0CA80D52D13171700972C48 /* TradeAppTests */,
 				A0CA80DF2D13171700972C48 /* TradeAppUITests */,
 				A0CA80C32D13171600972C48 /* Products */,
+				A6428A7A200AC1FB8F5A6650 /* Pods */,
+				26DAE829F986023659DB8DC4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +113,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A6428A7A200AC1FB8F5A6650 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				257BC37C92B24881134061A3 /* Pods-TradeApp.debug.xcconfig */,
+				738743150EBE849BC81D0F62 /* Pods-TradeApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -105,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0CA80E62D13171700972C48 /* Build configuration list for PBXNativeTarget "TradeApp" */;
 			buildPhases = (
+				4EDEC4D2EC1A1D27AAC77537 /* [CP] Check Pods Manifest.lock */,
 				A0CA80BE2D13171600972C48 /* Sources */,
 				A0CA80BF2D13171600972C48 /* Frameworks */,
 				A0CA80C02D13171600972C48 /* Resources */,
+				B27DC87D461DF96C12A60E81 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -117,8 +143,6 @@
 				A0CA80C42D13171600972C48 /* TradeApp */,
 			);
 			name = TradeApp;
-			packageProductDependencies = (
-			);
 			productName = TradeApp;
 			productReference = A0CA80C22D13171600972C48 /* TradeApp.app */;
 			productType = "com.apple.product-type.application";
@@ -140,8 +164,6 @@
 				A0CA80D52D13171700972C48 /* TradeAppTests */,
 			);
 			name = TradeAppTests;
-			packageProductDependencies = (
-			);
 			productName = TradeAppTests;
 			productReference = A0CA80D22D13171700972C48 /* TradeAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -163,8 +185,6 @@
 				A0CA80DF2D13171700972C48 /* TradeAppUITests */,
 			);
 			name = TradeAppUITests;
-			packageProductDependencies = (
-			);
 			productName = TradeAppUITests;
 			productReference = A0CA80DC2D13171700972C48 /* TradeAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -237,6 +257,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4EDEC4D2EC1A1D27AAC77537 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TradeApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B27DC87D461DF96C12A60E81 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TradeApp/Pods-TradeApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TradeApp/Pods-TradeApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TradeApp/Pods-TradeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A0CA80BE2D13171600972C48 /* Sources */ = {
@@ -313,7 +375,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -376,7 +438,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -397,6 +459,7 @@
 		};
 		A0CA80E72D13171700972C48 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 257BC37C92B24881134061A3 /* Pods-TradeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -433,6 +496,7 @@
 		};
 		A0CA80E82D13171700972C48 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 738743150EBE849BC81D0F62 /* Pods-TradeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

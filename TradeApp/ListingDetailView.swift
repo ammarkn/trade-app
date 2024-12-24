@@ -81,22 +81,24 @@ struct ListingDetailView: View {
                         
                         HStack(alignment: .top, spacing: 16) {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Category")
-                                    .font(.title2)
-                                    .fontWeight(.semibold)
-                                Text(listing.category)
-                                    .font(.body)
-                                    .foregroundStyle(.secondary)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
-                            Spacer()
-                            Divider()
-                            Spacer()
-                            VStack(alignment: .trailing, spacing: 8) {
                                 Text("Condition")
                                     .font(.title2)
                                     .fontWeight(.semibold)
                                 Text(listing.condition ?? "Not specified.")
+                                    .font(.body)
+                                    .foregroundStyle(.secondary)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                            
+                            Spacer()
+                            Divider()
+                            Spacer()
+                            
+                            VStack(alignment: .trailing, spacing: 8) {
+                                Text("Category")
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                Text(listing.category)
                                     .font(.body)
                                     .foregroundStyle(.secondary)
                                     .fixedSize(horizontal: false, vertical: true)

@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var authenticatedUser: User? = nil
-    @State private var isAuthenticated = true
+    @StateObject private var authService = AuthService()
     
     var body: some View {
         NavigationView {
-            if isAuthenticated {
+            if authService.isAuthenticated {
                 VStack(spacing: 5) {
                     HStack(spacing: 5) {
                         Text("฿")
@@ -50,7 +49,8 @@ struct ContentView: View {
                                 Label("Chats", systemImage: "message")
                             }
                             .accessibilityLabel( "Chats Tab")
-                        ProfileView(isAuthenticated: $isAuthenticated, user: authenticatedUser)
+                        ProfileView()
+                            .environmentObject(authService)
                             .tabItem {
                                 Label("Profile", systemImage: "person")
                             }
@@ -60,7 +60,8 @@ struct ContentView: View {
                 }
             }
             else {
-                SignInView(isAuthenticated: $isAuthenticated, authenticatedUser: $authenticatedUser)
+                SignInView()
+                    .environmentObject(authService)
             }
         }
     }
