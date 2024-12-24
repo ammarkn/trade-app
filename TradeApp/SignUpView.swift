@@ -46,7 +46,7 @@ struct SignUpView: View {
                             .foregroundStyle(.black)
                     }
                     
-                    Text("Swap what you have for what you need.")
+                    Text("Swap what you have for what you need!")
                         .foregroundStyle(.secondary)
                         .italic()
                 }

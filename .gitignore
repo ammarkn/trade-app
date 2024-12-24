@@ -12,6 +12,9 @@ xcuserdata/
 # CocoaPods
 Pods/
 
+# Google API
+GoogleService-Info.plist
+
 # Swift Package Manager
 .build/
 .swiftpm/

@@ -36,7 +36,7 @@ struct SignInView: View {
                     .foregroundStyle(.black)
             }
             
-            Text("Swap what you have for what you need.")
+            Text("Swap what you have for what you need!")
                 .foregroundStyle(.secondary)
                 .italic()
                 .padding(.bottom, 25)
