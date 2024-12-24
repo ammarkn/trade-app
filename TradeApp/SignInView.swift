@@ -21,12 +21,12 @@ struct SignInView: View {
                 Text("฿")
                     .font(.system(size: 60))
                     .fontWeight(.bold)
-                    .foregroundColor(.indigo)
+                    .foregroundStyle(.indigo)
                 
                 Text("Barterly")
                     .font(.system(size: 55))
                     .fontWeight(.semibold)
-                    .foregroundColor(.black)
+                    .foregroundStyle(.black)
             }
             
             Text("Swap what you have for what you need.")

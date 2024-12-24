@@ -20,12 +20,12 @@ struct ContentView: View {
 //                            .font(.largeTitle)
                             .font(.system(size: 40))
                             .fontWeight(.bold)
-                            .foregroundColor(.indigo)
+                            .foregroundStyle(.indigo)
                         Text("Barterly")
 //                            .font(.title)
                             .font(.system(size: 35))
                             .fontWeight(.semibold)
-                            .foregroundColor(.black)
+                            .foregroundStyle(.black)
                     }
                     .padding(.top, 8)
                     
@@ -45,7 +45,7 @@ struct ContentView: View {
                                 Label("Create", systemImage: "plus")
                             }
                             .accessibilityLabel("Create Post Tab")
-                        Text("Chats")
+                        ChatsView()
                             .tabItem {
                                 Label("Chats", systemImage: "message")
                             }
